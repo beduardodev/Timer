@@ -1,3 +1,5 @@
+const { ipcRenderer } = require('renderer.js');
+
 let linkFechar = document.querySelector("#link-fechar");
 
 linkFechar.addEventListener('click', function () {

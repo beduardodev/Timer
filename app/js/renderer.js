@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('sobre.js');
+const { ipcRenderer } = require('electron');
 
 let linkSobre = document.querySelector('#link-sobre');
 
