@@ -1,4 +1,4 @@
-const { ipcRenderer } = require('renderer.js');
+const { ipcRenderer } = require('electron');
 
 let linkFechar = document.querySelector("#link-fechar");
 

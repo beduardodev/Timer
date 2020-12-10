@@ -26,7 +26,8 @@ ipcMain.on('abrir-janela-sobre', () => {
             alwaysOnTop: true,
             webPreferences: {
                 nodeIntegration: true
-            }
+            }, 
+            frame : false
         });
         sobreWindow.on('closed', () => {
             sobreWindow = null;
@@ -36,5 +37,6 @@ ipcMain.on('abrir-janela-sobre', () => {
 });
 
 ipcMain.on('fechar-janela-sobre', () => {
+    console.log('Teste');
     sobreWindow.close();
 });
