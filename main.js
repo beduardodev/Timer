@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain, ipcRenderer } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 app.on('ready', () => {
     console.log('Aplicação Iniciada!');
@@ -22,12 +22,13 @@ ipcMain.on('abrir-janela-sobre', () => {
     if (sobreWindow == null) {
         sobreWindow = new BrowserWindow({
             width: 300,
-            height: 220,
+            height: 250,
             alwaysOnTop: true,
             webPreferences: {
                 nodeIntegration: true
-            }, 
-            frame : false
+            },
+            frame: false,
+
         });
         sobreWindow.on('closed', () => {
             sobreWindow = null;
@@ -37,6 +38,5 @@ ipcMain.on('abrir-janela-sobre', () => {
 });
 
 ipcMain.on('fechar-janela-sobre', () => {
-    console.log('Teste');
     sobreWindow.close();
 });
