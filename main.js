@@ -27,7 +27,7 @@ ipcMain.on('abrir-janela-sobre', () => {
             webPreferences: {
                 nodeIntegration: true
             },
-            frame: false,
+            frame: false
 
         });
         sobreWindow.on('closed', () => {
@@ -40,3 +40,7 @@ ipcMain.on('abrir-janela-sobre', () => {
 ipcMain.on('fechar-janela-sobre', () => {
     sobreWindow.close();
 });
+
+ipcMain.on('curso-parado', (event, curso, tempoEstudado) => {
+    console.log(`O curso ${curso} foi estudados por ${tempoEstudado}`);
+})
