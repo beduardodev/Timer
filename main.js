@@ -17,12 +17,31 @@ app.on('ready', () => {
     });
 
     tray = new Tray(__dirname + '/app/img/icon.png');
-
     let template = templateGenerator.gerarTrayTemplate(mainWindow);
-
     let trayMenu = Menu.buildFromTemplate(template);
 
     tray.setContextMenu(trayMenu);
+
+    let templateMenu = [{
+        label: 'Meu menu',
+        submenu: [
+            { label: 'Item 1' },
+            { label: 'Item 2' }
+        ]
+    }];
+
+    if (process.platform == 'darwin') {
+        templateMenu.unshift({
+            label: app.getName(),
+            submenu: [
+                { label: 'No MAC OS a coisa é diferente!' }
+            ]
+        });
+    }
+
+    let menuPrincipal = Menu.buildFromTemplate(templateMenu);
+
+    Menu.setApplicationMenu(menuPrincipal);
 
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
