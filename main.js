@@ -16,7 +16,7 @@ app.on('ready', () => {
 
     tray = new Tray(__dirname + '/app/img/icon.png');
 
-    let template = templateGenerator.gerarTrayTemplate();
+    let template = templateGenerator.gerarTrayTemplate(mainWindow);
 
     let trayMenu = Menu.buildFromTemplate(template);
 

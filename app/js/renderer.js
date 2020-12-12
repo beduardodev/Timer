@@ -8,7 +8,7 @@ let tempo = document.querySelector('.tempo');
 let curso = document.querySelector('.curso');
 
 window.onload = () => {
-    data.pegaDados(curso.textContent).then((dados) => {        
+    data.pegaDados(curso.textContent).then((dados) => {
         tempo.textContent = dados.tempo;
     });
 }
@@ -32,3 +32,12 @@ botaoPlay.addEventListener('click', function () {
     imgs = imgs.reverse();
     botaoPlay.src = imgs[0];
 });
+
+ipcRenderer.on('curso-trocado', (event, nomeCurso) => {
+    data.pegaDados(nomeCurso).then((dados) => {
+        tempo.textContent = dados.tempo;
+    }).catch((err) => {
+        console.log(err);
+    })
+    curso.textContent = nomeCurso;
+})
