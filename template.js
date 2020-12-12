@@ -1,3 +1,4 @@
+const { ipcMain } = require('electron');
 const data = require('./data');
 
 module.exports = {
@@ -27,7 +28,7 @@ module.exports = {
 
         return template;
     },
-    adicionaCursoNoTray(curso, win) {
+    adicionaCursoNoTray(curso, ) {
         this.templateInicial.push({
             label: curso,
             type: 'radio',
@@ -35,8 +36,29 @@ module.exports = {
             click: () => {
                 win.send('curso-trocado', curso);
             }
-        });
+        })
 
         return this.templateInicial;
+    },
+    geraMenuPrincipalTemplate(app) {
+        let templateMenu = [{
+            label: 'Sobre',
+            submenu: [{
+                label: 'Sobre o Timer',
+                click: () => {
+                    ipcMain.emit('abrir-janela-sobre');
+                }
+            }]
+        }];
+
+        if (process.platform == 'darwin') { //caso seja MAC OS
+            templateMenu.unshift({
+                label: app.getName(),
+                submenu: [
+                    { label: 'Wubba lubba dub dub!' }
+                ]
+            })
+        }
+        return templateMenu;
     }
 }
