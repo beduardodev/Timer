@@ -42,14 +42,35 @@ module.exports = {
     },
     geraMenuPrincipalTemplate(app) {
         let templateMenu = [{
-            label: 'Sobre',
-            submenu: [{
-                label: 'Sobre o Timer',
-                click: () => {
-                    ipcMain.emit('abrir-janela-sobre');
-                }
-            }]
-        }];
+                label: 'View',
+                submenu: [{
+                        role: 'reload'
+                    },
+                    {
+                        role: 'toggledevtools'
+                    }
+                ]
+            },
+            {
+                label: 'Window',
+                submenu: [{
+                        role: 'minimize'
+                    },
+                    {
+                        role: 'close'
+                    }
+                ]
+            },
+            {
+                label: 'Sobre',
+                submenu: [{
+                    label: 'Sobre o Timer',
+                    click: () => {
+                        ipcMain.emit('abrir-janela-sobre');
+                    }
+                }]
+            }
+        ];
 
         if (process.platform == 'darwin') { //caso seja MAC OS
             templateMenu.unshift({
