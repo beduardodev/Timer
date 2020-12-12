@@ -1,5 +1,7 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow, ipcMain, Tray, Menu } = require('electron');
 const data = require('./data');
+
+let tray = null;
 
 app.on('ready', () => {
     console.log('Aplicação Iniciada!');
@@ -10,6 +12,18 @@ app.on('ready', () => {
             nodeIntegration: true
         }
     });
+
+    tray = new Tray(__dirname + '/app/img/icon.png');
+
+    let trayMenu = Menu.buildFromTemplate([
+        {label: 'Cursos'},
+        {label: '', type: 'separator'},
+        {label: 'JavaScript', type: 'radio'},
+        {label: 'Java', type: 'radio'},
+        {label: 'Photoshop', type: 'radio'}
+    ]);
+
+    tray.setContextMenu(trayMenu);
 
     mainWindow.loadURL(`file://${__dirname}/app/index.html`);
 });
@@ -42,6 +56,6 @@ ipcMain.on('fechar-janela-sobre', () => {
     sobreWindow.close();
 });
 
-ipcMain.on('curso-parado', (event,curso, tempoEstudado) => {
+ipcMain.on('curso-parado', (event, curso, tempoEstudado) => {
     data.salvaDados(curso, tempoEstudado);
 });
