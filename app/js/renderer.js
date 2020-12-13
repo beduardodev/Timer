@@ -52,6 +52,15 @@ ipcRenderer.on('curso-trocado', (event, nomeCurso) => {
 });
 
 botaoAdicionar.addEventListener('click', function() {
+
+    if (campoAdicionar.value == '') {
+        new Notification('Timer', {
+            body: `Não foi informado o nome da Atividade!`,
+            icon: 'img/icon.png'
+        });
+        return;
+    }
+
     let novoCurso = campoAdicionar.value;
     curso.textContent = novoCurso;
     tempo.textContent = '00:00:00';
