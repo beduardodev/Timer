@@ -28,7 +28,7 @@ module.exports = {
 
         return template;
     },
-    adicionaCursoNoTray(curso, ) {
+    adicionaCursoNoTray(curso, win) {
         this.templateInicial.push({
             label: curso,
             type: 'radio',
