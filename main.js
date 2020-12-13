@@ -13,7 +13,9 @@ app.on('ready', () => {
         height: 400,
         webPreferences: {
             nodeIntegration: true
-        }
+        },
+        resizable: false,
+        fullscreenable: false
     });
 
     tray = new Tray(__dirname + '/app/img/icon.png');
@@ -49,7 +51,6 @@ ipcMain.on('abrir-janela-sobre', () => {
                 nodeIntegration: true
             },
             frame: false
-
         });
         sobreWindow.on('closed', () => {
             sobreWindow = null;
