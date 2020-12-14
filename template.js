@@ -65,7 +65,7 @@ module.exports = {
                 label: 'About',
                 submenu: [{
                     label: 'About this Timer',
-                    accelerator: 'CmdOrControl+I',
+                    accelerator: 'Alt+B',
                     click: () => {
                         ipcMain.emit('abrir-janela-sobre');
                     }
