@@ -7,8 +7,13 @@
         "test": "echo \"Error: no test specified\" && exit 1",
         "start": "electron ."
     },
-    "author": "",
+    "author": "Bruno Eduardo",
     "license": "ISC",
+    "build": {
+        "asar": "true",
+        "productName": "Timer",
+        "icon": "app/img/icon.png"
+    },
     "dependencies": {
         "jsonfile-promised": "^0.0.1",
         "moment": "^2.29.1"

@@ -34,18 +34,26 @@ body {
     margin-top: 30px;
 }
 
+.teste{
+   display: flex;
+   flex-direction: row; 
+   height: 75%;
+   align-items: center;
+   justify-content: center;
+}
+
 .relogio {
     display: inline-block;
     width: 75%;
     text-align: center;
-    height: 75%;
+    height: 100%;
     vertical-align: top;
     background-color: #879CFF;
 }
 
 .controles {
     width: 25%;
-    height: 75%;
+    height: 100%;
     /*margin-bottom: 5px;*/
     display: inline-block;
     background-color: #7D94FF;
@@ -124,7 +132,6 @@ input {
     font-size: 18px;
     padding: 10px 10px 10px 5px;
     display: inline-block;
-    ;
     width: 300px;
     border: none;
     border-bottom: 1px solid #757575;
